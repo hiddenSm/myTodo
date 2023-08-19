@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Todo List</h2>
+    <ul>
+        {% for todo in task_list %}
+            {% if todo.completed %}
+                <h4>
+                    <li> 
+                        {{ todo.completed }} | <a href="{% url 'td_edit' todo.id %}">{{ todo.title }}</a> | {{ todo.created }} |
+                        <a href="{% url 'td_delete' todo.id %}"><input type="submit" value="Delete"></a>
+                    </li>
+                </h4>
+                {% else %}
+                <h4>
+                    <li>
+                        <a href="{% url 'td_edit' todo.id %}"> {{ todo.title }} </a> | {{ todo.created }} | 
+                        <a href="{% url 'td_delete' todo.id %}"><input type="submit" value="Delete"></a>
+                    </li>
+                </h4>
+                
+            {% endif %}
+        {% endfor %}
+        <a href="{% url 'td_new' %}"><input value="Add" type="button"></a>
+    </ul>
+{% endblock %}
