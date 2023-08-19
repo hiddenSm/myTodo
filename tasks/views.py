@@ -5,6 +5,7 @@ from django.urls import reverse_lazy
 from django.http import HttpResponse
 from .models import Task
 from .forms import TaskForm
+
 # Create your views here.
 
 class TodoListView(ListView):
